@@ -1,0 +1,6 @@
+stages:
+  - stage: lint_and_tests
+    condition: eq(variables['Build.Reason'], 'PullRequest')
+    displayName: Lint, tests and code quality
+    jobs:
+      - template: ./jobs-lint-and-build.yaml
