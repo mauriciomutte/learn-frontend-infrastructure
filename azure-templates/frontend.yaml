@@ -11,3 +11,11 @@ stages:
     displayName: Lint, tests and code quality
     jobs:
       - template: ./jobs-lint-and-build.yaml
+
+  - stage: build
+    pool:
+      vmImage: ${{ parameters.vmImage }}
+    condition: ne(variables['Build.Reason'], 'PullRequest')
+    displayName: Build and publish artifacts
+    jobs:
+      - template: ./jobs-build-and-publish-artifacts.yaml
