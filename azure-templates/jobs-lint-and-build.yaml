@@ -12,5 +12,5 @@ jobs:
         displayName: 'Yarn install'
 
       - script: |
-          yarn build && yarn test
+          yarn build && yarn test:ci
         displayName: 'Build & tests'
