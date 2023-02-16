@@ -1,0 +1,21 @@
+jobs:
+  - job: lint
+    displayName: 'Lint & tests'
+    steps:
+      - task: NodeTool@0
+        displayName: 'Use Node 16.x'
+        inputs:
+          versionSpec: '16.x'
+
+      - script: |
+          yarn --frozen-lockfile
+        displayName: 'Yarn install'
+
+      - script: |
+          yarn build
+        displayName: 'Build'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact'
+        inputs:
+          PathtoPublish: dist/
