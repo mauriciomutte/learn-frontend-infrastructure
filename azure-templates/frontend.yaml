@@ -19,3 +19,13 @@ stages:
     displayName: Build and publish artifacts
     jobs:
       - template: ./jobs-build-and-publish-artifacts.yaml
+
+  - stage: deploy
+    pool:
+      vmImage: ${{ parameters.vmImage }}
+    dependsOn: build
+    displayName: Deploy to AWS
+    jobs:
+      - template: ./jobs-deploy-to-aws.yaml
+        parameters:
+          BucketName: 'my-spa-bucket-justfortest'
