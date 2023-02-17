@@ -1,0 +1,21 @@
+parameters:
+  - name: BucketName
+    type: string
+    default: ''
+
+jobs:
+  - job: lint
+    displayName: 'Lint & tests'
+    steps:
+      - task: DownloadBuildArtifacts@0
+        inputs:
+          buildType: 'current'
+          downloadType: 'specific'
+          downloadPath: '$(System.ArtifactsDirectory)'
+
+      - task: AWSCLI@1
+        displayName: 'Deploy SPA application to S3'
+        inputs:
+          awsCredentials: 'YOUR_AWS_CONNECTION'
+          regionName: 'us-east-1'
+          awsCommand: 'aws s3 sync $(System.ArtifactsDirectory)/blog s3://${{ parameters.BucketName }} --delete'
