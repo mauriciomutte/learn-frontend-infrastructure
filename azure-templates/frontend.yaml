@@ -27,7 +27,7 @@ stages:
     condition: |
       and(
         in(dependencies.build.result, 'Succeeded'),
-        ne(variables['Build.Reason'], 'PullRequest'),
+        ne(variables['Build.Reason'], 'PullRequest')
       )
     displayName: Deploy to AWS
     jobs:
