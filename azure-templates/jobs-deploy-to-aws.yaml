@@ -5,7 +5,7 @@ parameters:
 
 jobs:
   - job: lint
-    displayName: 'Lint & tests'
+    displayName: 'Deploy'
     steps:
       - task: DownloadBuildArtifacts@0
         inputs:

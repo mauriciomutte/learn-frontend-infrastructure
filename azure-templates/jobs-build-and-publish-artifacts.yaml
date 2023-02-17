@@ -1,6 +1,6 @@
 jobs:
   - job: lint
-    displayName: 'Lint & tests'
+    displayName: 'Build'
     steps:
       - task: NodeTool@0
         displayName: 'Use Node 16.x'
