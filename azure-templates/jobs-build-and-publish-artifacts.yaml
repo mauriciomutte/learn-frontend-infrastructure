@@ -1,5 +1,5 @@
 jobs:
-  - job: lint
+  - job: build
     displayName: 'Build'
     steps:
       - task: NodeTool@0
