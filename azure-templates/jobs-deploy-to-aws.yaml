@@ -18,5 +18,5 @@ jobs:
           awsCredentials: 'YOUR_AWS_CONNECTION'
           regionName: 'us-east-1'
           awsCommand: 's3'
-          awsSubCommand: 'sync $(System.ArtifactsDirectory)/drop s3://${{ parameters.BucketName }}'
-          awsArguments: '--delete'
+          awsSubCommand: 'sync'
+          awsArguments: '$(System.ArtifactsDirectory)/drop s3://${{ parameters.BucketName }} --delete'
