@@ -24,6 +24,11 @@ stages:
     pool:
       vmImage: ${{ parameters.vmImage }}
     dependsOn: build
+    condition: |
+      and(
+        in(dependencies.build.result, 'Succeeded'),
+        ne(variables['Build.Reason'], 'PullRequest'),
+      )
     displayName: Deploy to AWS
     jobs:
       - template: ./jobs-deploy-to-aws.yaml
