@@ -12,6 +12,14 @@ stages:
     jobs:
       - template: ./jobs-lint-and-build.yaml
 
+  - stage: tests
+    pool:
+      vmImage: ${{ parameters.vmImage }}
+    condition: ne(variables['Build.Reason'], 'PullRequest')
+    displayName: Run tests in main branch
+    jobs:
+      - template: ./jobs-main-tests.yaml
+
   - stage: build
     pool:
       vmImage: ${{ parameters.vmImage }}
