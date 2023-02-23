@@ -1,8 +1,8 @@
-variables:
-  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
-
 jobs:
   - job: lint
+    variables:
+      - name: YARN_CACHE_FOLDER
+        value: $(Pipeline.Workspace)/.yarn
     displayName: 'Lint & tests'
     steps:
       - task: NodeTool@0
