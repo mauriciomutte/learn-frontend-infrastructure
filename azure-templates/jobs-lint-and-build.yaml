@@ -1,3 +1,6 @@
+variables:
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+
 jobs:
   - job: lint
     displayName: 'Lint & tests'
@@ -13,7 +16,7 @@ jobs:
           restoreKeys: |
             "yarn" | "$(Agent.OS)"
             "yarn"
-          path: $(Pipeline.Workspace)/.yarn
+          path: $(YARN_CACHE_FOLDER)
         displayName: Cache Yarn packages
 
       - script: |
