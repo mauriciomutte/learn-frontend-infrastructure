@@ -7,6 +7,15 @@ jobs:
         inputs:
           versionSpec: '16.x'
 
+      - task: Cache@2
+        inputs:
+          key: '"yarn" | "$(Agent.OS)" | yarn.lock'
+          restoreKeys: |
+            "yarn" | "$(Agent.OS)"
+            "yarn"
+          path: $(Pipeline.Workspace)/.yarn
+        displayName: Cache Yarn packages
+
       - script: |
           yarn --frozen-lockfile
         displayName: 'Yarn install'
