@@ -1,0 +1,16 @@
+jobs:
+  - job: tests
+    displayName: 'Tests'
+    steps:
+      - task: NodeTool@0
+        displayName: 'Use Node 16.x'
+        inputs:
+          versionSpec: '16.x'
+
+      - script: |
+          yarn --frozen-lockfile
+        displayName: 'Yarn install'
+
+      - script: |
+          yarn test:ci
+        displayName: 'Run tests'
