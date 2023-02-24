@@ -41,4 +41,5 @@ stages:
     jobs:
       - template: ./jobs-deploy-to-aws.yaml
         parameters:
+          EnvironmentName: 'app-prd'
           BucketName: 'my-spa-bucket-justfortest'

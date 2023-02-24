@@ -2,10 +2,12 @@ parameters:
   - name: BucketName
     type: string
     default: ''
+  - name: 'EnvironmentName'
+    type: string
 
 jobs:
   - deployment: deploy
-    displayName: 'Deploy'
+    environment: ${{ parameters.EnvironmentName }}
     strategy:
       runOnce:
         deploy:
