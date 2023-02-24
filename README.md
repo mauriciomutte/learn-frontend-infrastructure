@@ -2,6 +2,12 @@
 
 > 📚 Studies about Frontend infrastructure
 
+## Projects
+
+### Terraform - IaC (Infrastructure as Code)
+
+- [Terraform: S3 + CloudFront](./terraform/cdn/)
+
 ## Resources
 
 ### CI/CD
@@ -10,7 +16,3 @@
 - [Modern Frontend CI/CD Architecture — The Missing Guide (Part. 1): The CI.](https://medium.com/google-cloud/modern-frontend-ci-cd-architecture-the-missing-guide-part-1-8444001fadc)
 - [Modern Frontend CI/CD Architecture — The Missing Guide (Part. 2): The CD.](https://medium.com/google-cloud/modern-frontend-ci-cd-architecture-the-missing-guide-part-2-d51875bd0e65)
 - [Modern Frontend CI/CD Architecture — The Missing Guide (Part. 3)](https://medium.com/google-cloud/modern-frontend-ci-cd-architecture-the-missing-guide-part-3-9a6be231d14)
-
-### Terraform - IaC (Infrastructure as Code)
-
-- [Terraform: S3 + CloudFront](./terraform/cdn/)
