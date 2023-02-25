@@ -2,7 +2,7 @@ parameters:
   - name: BucketName
     type: string
     default: ''
-  - name: 'EnvironmentName'
+  - name: EnvironmentName
     type: string
 
 jobs:
