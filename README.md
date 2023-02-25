@@ -4,8 +4,7 @@
 
 ## Projects
 
-### Terraform - IaC (Infrastructure as Code)
-
+- [Azure Pipelines: CI/CD using YML with templates](./azure-pipelines/)
 - [Terraform: S3 + CloudFront](./terraform/cdn/)
 
 ## Resources
