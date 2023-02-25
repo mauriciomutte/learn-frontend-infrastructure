@@ -21,4 +21,4 @@
 
 ## 3. Pipeline structure
 
-![image](https://user-images.githubusercontent.com/20569339/221383067-e5f0164e-35fa-4a81-bbf3-4016af393fdc.png)
+![image](https://user-images.githubusercontent.com/20569339/221383115-f75c0984-a636-4302-99eb-c7c48c752e54.png)
