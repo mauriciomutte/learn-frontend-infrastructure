@@ -3,7 +3,7 @@ jobs:
     variables:
       - name: YARN_CACHE_FOLDER
         value: $(Pipeline.Workspace)/.yarn
-    displayName: 'Lint & tests'
+    displayName: 'Run build and tests'
     steps:
       - template: ./steps-install-packages.yaml
 
