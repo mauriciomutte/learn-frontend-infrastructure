@@ -5,23 +5,7 @@ jobs:
         value: $(Pipeline.Workspace)/.yarn
     displayName: 'Lint & tests'
     steps:
-      - task: NodeTool@0
-        displayName: 'Use Node 16.x'
-        inputs:
-          versionSpec: '16.x'
-
-      - task: Cache@2
-        inputs:
-          key: '"yarn" | "$(Agent.OS)" | yarn.lock'
-          restoreKeys: |
-            "yarn" | "$(Agent.OS)"
-            "yarn"
-          path: $(YARN_CACHE_FOLDER)
-        displayName: Cache Yarn packages
-
-      - script: |
-          yarn --frozen-lockfile
-        displayName: 'Yarn install'
+      - template: ./steps-install-packages.yaml
 
       - script: |
           yarn build && yarn test:ci

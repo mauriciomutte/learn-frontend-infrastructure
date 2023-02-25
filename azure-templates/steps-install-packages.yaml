@@ -6,4 +6,4 @@ steps:
 
   - script: |
       yarn --frozen-lockfile
-    displayName: 'Yarn install'
+    displayName: 'Install packages'
