@@ -20,3 +20,5 @@
 - **Collaboration:** Storing pipelines on Github makes any changes visible and allows for more efficient collaboration with others.
 
 ## 3. Pipeline structure
+
+![image](https://user-images.githubusercontent.com/20569339/221383067-e5f0164e-35fa-4a81-bbf3-4016af393fdc.png)
