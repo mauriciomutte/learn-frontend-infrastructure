@@ -12,10 +12,16 @@ jobs:
       runOnce:
         deploy:
           steps:
+            - task: DownloadBuildArtifacts@0
+              inputs:
+                buildType: 'current'
+                downloadType: 'specific'
+                downloadPath: '$(System.ArtifactsDirectory)'
+
             - task: AWSCLI@1
               inputs:
                 awsCredentials: 'YOUR_AWS_CONNECTION'
                 regionName: 'us-east-1'
                 awsCommand: 's3'
                 awsSubCommand: 'sync'
-                awsArguments: '$(System.DefaultWorkingDirectory)/drop s3://${{ parameters.BucketName }} --delete'
+                awsArguments: '$(System.ArtifactsDirectory)/drop s3://${{ parameters.BucketName }} --delete'
