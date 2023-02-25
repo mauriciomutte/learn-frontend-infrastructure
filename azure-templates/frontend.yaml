@@ -12,11 +12,19 @@ stages:
     jobs:
       - template: ./jobs-lint-and-build.yaml
 
-  - stage: tests
+  - stage: static_code_analisys
     pool:
       vmImage: ${{ parameters.vmImage }}
-    condition: ne(variables['Build.Reason'], 'PullRequest')
-    displayName: Run tests in main branch
+    condition: |
+      and(
+        ne(variables['Build.Reason'], 'PullRequest'),
+        or
+        (
+          contains(variables['Build.SourceBranch'], 'master'),
+          contains(variables['Build.SourceBranch'], 'main')
+        )
+      )
+    displayName: Static Code Analisys
     jobs:
       - template: ./jobs-main-tests.yaml
 
@@ -34,8 +42,12 @@ stages:
     dependsOn: build
     condition: |
       and(
-        in(dependencies.build.result, 'Succeeded'),
-        ne(variables['Build.Reason'], 'PullRequest')
+        in(dependencies.build.result, 'Succeeded', 'SucceededWithIssues'),
+        or
+        (
+          contains(variables['Build.SourceBranch'], 'master'),
+          contains(variables['Build.SourceBranch'], 'main')
+        )
       )
     displayName: Deploy to AWS
     jobs:
