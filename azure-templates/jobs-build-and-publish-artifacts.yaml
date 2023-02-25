@@ -3,8 +3,6 @@ jobs:
     displayName: 'Build'
     steps:
       - template: ./steps-install-packages.yaml
-        parameters:
-          CachePackageInstall: false
 
       - script: |
           yarn build

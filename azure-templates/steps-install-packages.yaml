@@ -1,28 +1,8 @@
-parameters:
-  - name: CachePackageInstall
-    type: boolean
-    default: true
-variables:
-  - name: YARN_CACHE_FOLDER
-    value: $(Pipeline.Workspace)/.yarn
 steps:
   - task: NodeTool@0
     displayName: 'Use Node 16.x'
     inputs:
       versionSpec: '16.x'
-
-  - task: Cache@2
-    condition: |
-      and(
-        succeeded(),      
-        eq('${{ parameters.CachePackageInstall }}', true)
-      )
-    inputs:
-      key: '"yarn" | "$(Agent.OS)" | yarn.lock'
-      restoreKeys: |
-        "yarn" | "$(Agent.OS)"
-        "yarn"
-      path: $(YARN_CACHE_FOLDER)
 
   - script: |
       yarn --frozen-lockfile
