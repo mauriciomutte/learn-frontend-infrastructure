@@ -90,3 +90,18 @@ jobs:
       parameters:
         nodeVersion: '16.x'
 ```
+
+### 5. Using template in a project
+
+```yaml
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: <your-github-username>/<template-repository>
+      endpoint: github.com
+      ref: main
+
+extends:
+  template: <template-repository>/<pipeline-file>.yaml@templates
+```
