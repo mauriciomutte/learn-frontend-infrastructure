@@ -39,11 +39,11 @@ See the code example:
 
 ```yaml
 stages:
-  - stage: stage-example
-    displayName: Stage example name
+  - stage: stage-name
+    displayName: Stage display name
     jobs:
-      - job: job-example
-        displayName: Job example name
+      - job: job-name
+        displayName: Job display name
         steps:
           - task: NodeTool@0
             displayName: 'Use Node 16.x'
@@ -53,4 +53,40 @@ stages:
           - script: |
               yarn --frozen-lockfile
             displayName: 'Yarn install'
+```
+
+### 4. Templates
+
+Templates are reusable, shareable, and parameterized pipeline definitions that can be used to define a pipeline, stages, jobs, etc. Templates make it easy to define pipelines that can be used across multiple projects, without having to rewrite the same code over and over again.
+
+Let's say you have different "jobs" with some common steps like installing node and installing dependencies. We could have a template for that and use it in these jobs (which are also templates)
+
+```yaml
+# templates/yarn-install.yml
+
+parameters:
+  - name: nodeVersion
+    type: string
+    default: '14.x'
+
+steps:
+  - task: NodeTool@0
+    displayName: 'Use Node ${{ parameters.nodeVersion }}'
+    inputs:
+      versionSpec: ${{ parameters.nodeVersion }}
+
+  - script: |
+      yarn --frozen-lockfile
+    displayName: 'Yarn install'
+```
+
+```yaml
+# my-pipeline.yml
+
+jobs:
+  job: job-name
+  steps:
+    - template: ./templates/yarn-install.yml
+      parameters:
+        nodeVersion: '16.x'
 ```
