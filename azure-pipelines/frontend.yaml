@@ -10,7 +10,7 @@ stages:
     condition: eq(variables['Build.Reason'], 'PullRequest')
     displayName: Check Pull-request
     jobs:
-      - template: ./jobs-lint-and-build.yaml
+      - template: ./shared/jobs-lint-and-build.yaml
 
   - stage: static_code_analisys
     pool:
@@ -26,7 +26,7 @@ stages:
       )
     displayName: Static Code Analisys
     jobs:
-      - template: ./jobs-main-tests.yaml
+      - template: ./shared/jobs-main-tests.yaml
 
   - stage: build
     pool:
@@ -34,7 +34,7 @@ stages:
     condition: ne(variables['Build.Reason'], 'PullRequest')
     displayName: Build and publish artifacts
     jobs:
-      - template: ./jobs-build-and-publish-artifacts.yaml
+      - template: ./shared/jobs-build-and-publish-artifacts.yaml
 
   - stage: deploy
     pool:
@@ -51,7 +51,7 @@ stages:
       )
     displayName: Deploy to AWS
     jobs:
-      - template: ./jobs-deploy-to-aws.yaml
+      - template: ./shared/jobs-deploy-to-aws.yaml
         parameters:
           EnvironmentName: 'app-prd'
           BucketName: 'my-spa-bucket-justfortest'
