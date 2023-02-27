@@ -93,6 +93,10 @@ jobs:
 
 ### 5. Using template in a project
 
+To reuse a pipeline you've created to be used as a template in other Azure Pipelines projects, you can “import” it as a resource and extend it in your project's `azure-pipelines.yml` file.
+
+**Note:** first need to grant Azure DevOps access to your pipeline template repository. If you're using GitHub, you can manage this by navigating to _Settings > Integrations > Applications_ and configuring _Azure Pipelines app_.
+
 ```yaml
 resources:
   repositories:
