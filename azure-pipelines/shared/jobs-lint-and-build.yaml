@@ -8,5 +8,10 @@ jobs:
       - template: ./steps-install-packages.yaml
 
       - script: |
+          set -e
+          echo variables['Build.Reason']
+          echo $(Build.Reason)
+
+      - script: |
           yarn build && yarn test:ci
         displayName: 'Build & tests'
